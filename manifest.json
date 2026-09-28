@@ -1,6 +1,6 @@
 {
-  "name": "Pixel Art Studio",
-  "short_name": "PixelArt",
+  "name": "Good Habit 888",
+  "short_name": "GoodHabit",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -17,3 +17,4 @@
       "type": "image/png"
     }
   ]
+}
