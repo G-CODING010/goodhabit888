@@ -1505,6 +1505,14 @@
     renderReminders();
     updatePermissionBtnUI();
     triggerOpenReminders();
+    // Register Service Worker for Offline capability
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => console.log('Service Worker Registered Successfully!'))
+      .catch((err) => console.log('Service Worker Registration Failed: ', err));
+  });
+}
   </script>
 </body>
 </html>
