@@ -25,6 +25,7 @@
       --accent-color: #ffe500;
       --accent-hover: #e6ce00;
       --danger-color: #ff4d4d;
+      --success-color: #4CAF50;
       --font-family: 'Plus Jakarta Sans', 'Sarabun', sans-serif;
     }
 
@@ -154,7 +155,7 @@
       font-size: 0.95rem;
     }
 
-    /* Grid & Box Cards Layout */
+    /* Grid Layouts */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -203,17 +204,16 @@
       letter-spacing: 2px;
     }
 
-    /* Buttons & Inputs */
+    /* Form Controls */
     .btn-primary {
-      width: 100%;
-      padding: 1rem;
+      padding: 0.8rem 1.4rem;
       background-color: var(--accent-color);
       color: #000;
       border: none;
       border-radius: 10px;
       font-family: inherit;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -223,11 +223,26 @@
       transform: translateY(-1px);
     }
 
+    .btn-secondary {
+      background-color: var(--card-inner);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-highlight);
+    }
+
     .btn-permission {
       background-color: var(--card-inner);
       color: var(--accent-color);
       border: 1px solid var(--accent-color);
-      padding: 0.8rem 1.2rem;
+      padding: 0.9rem 1.2rem;
       border-radius: 10px;
       font-family: inherit;
       font-weight: 600;
@@ -288,12 +303,12 @@
       margin-bottom: 2rem;
     }
 
-    textarea, input[type="text"], .time-input {
+    textarea, input[type="text"], select, .time-input {
       width: 100%;
       background-color: var(--card-inner);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
-      padding: 1rem 1.2rem;
+      padding: 0.9rem 1.2rem;
       border-radius: 10px;
       font-family: inherit;
       font-size: 0.95rem;
@@ -301,20 +316,76 @@
       transition: border-color 0.2s ease;
     }
 
-    textarea:focus, input:focus {
+    textarea:focus, input:focus, select:focus {
       border-color: var(--accent-color);
     }
 
     .form-row {
       display: flex;
       gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .time-input {
-      width: 170px;
+      width: 150px;
     }
 
-    /* List Display Cards */
+    /* Day Selector Buttons for Alarm */
+    .day-selector {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .day-btn {
+      background-color: var(--card-inner);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .day-btn.selected {
+      background-color: var(--accent-color);
+      color: #000;
+      border-color: var(--accent-color);
+    }
+
+    /* Item Actions & Buttons */
+    .action-btn-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .btn-icon {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-icon:hover {
+      color: var(--text-primary);
+      border-color: var(--border-highlight);
+      background-color: var(--card-inner);
+    }
+
+    .btn-icon.danger:hover {
+      color: var(--danger-color);
+      border-color: var(--danger-color);
+    }
+
+    /* Lists Displays */
     .entry-list {
       display: flex;
       flex-direction: column;
@@ -328,12 +399,30 @@
       border-radius: 12px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
+    .entry-body {
+      flex: 1;
+    }
+
+    .entry-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 0.3rem;
+      white-space: pre-wrap;
+    }
+
+    .entry-date {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* Heart Grid */
     .heart-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1.2rem;
     }
 
@@ -341,16 +430,23 @@
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 14px;
-      padding: 1.5rem 1rem;
+      padding: 1.2rem 1rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
       align-items: center;
+      position: relative;
     }
 
     .heart-icon {
-      font-size: 2.2rem;
+      font-size: 2rem;
+    }
+
+    .heart-text {
+      font-size: 0.9rem;
+      word-break: break-word;
+      line-height: 1.4;
     }
 
     .heart-date {
@@ -358,11 +454,7 @@
       color: var(--text-secondary);
     }
 
-    .heart-text {
-      font-size: 0.9rem;
-      word-break: break-word;
-    }
-
+    /* Reminders & Alarm Cards */
     .reminder-grid {
       display: flex;
       flex-direction: column;
@@ -377,22 +469,98 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
-    .delete-btn {
-      background: none;
-      border: none;
-      color: var(--danger-color);
-      cursor: pointer;
+    .reminder-card.disabled {
+      opacity: 0.5;
+    }
+
+    .alarm-time-display {
+      font-size: 1.8rem;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      transition: background 0.2s;
+      color: var(--accent-color);
+      letter-spacing: 1px;
     }
 
-    .delete-btn:hover {
-      background-color: rgba(255, 77, 77, 0.1);
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      display: inline-block;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--card-inner);
+      border: 1px solid var(--border-color);
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: var(--text-secondary);
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+      background-color: #000;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-highlight);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .modal-header {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     /* Notification Banner (In-Page) */
@@ -402,13 +570,35 @@
       right: 24px;
       background-color: var(--accent-color);
       color: #000;
-      padding: 1rem 1.6rem;
-      border-radius: 12px;
-      font-weight: 700;
+      padding: 1.2rem 1.6rem;
+      border-radius: 14px;
+      font-weight: 600;
       display: none;
       box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-      z-index: 1000;
+      z-index: 3000;
+      max-width: 380px;
       animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .banner-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .banner-close-btn {
+      background: rgba(0, 0, 0, 0.15);
+      border: none;
+      color: #000;
+      font-weight: 700;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .banner-close-btn:hover {
+      background: rgba(0, 0, 0, 0.3);
     }
 
     @keyframes slideIn {
@@ -430,22 +620,40 @@
         <button class="nav-btn active" onclick="switchSection('timer', this)">
           <span>⏳</span> กฎ 8-8-8
         </button>
+        <button class="nav-btn" onclick="switchSection('alarm', this)">
+          <span>⏰</span> ตั้งนาฬิกาปลุก
+        </button>
         <button class="nav-btn" onclick="switchSection('journal', this)">
           <span>📖</span> บันทึกไดอารี่
         </button>
         <button class="nav-btn" onclick="switchSection('reminders', this)">
-          <span>🔔</span> แจ้งเตือนเตือนใจ
+          <span>🔔</span> ตั้งค่าการแจ้งเตือน
         </button>
       </nav>
     </div>
     <div class="sidebar-footer">
-      Minimal Tracker v1.0
+      Minimal Tracker v3.0
     </div>
   </aside>
 
   <!-- Notification Banner (In-page Fallback) -->
   <div id="notificationBanner" class="notification-banner">
-    <span id="notificationText">ข้อความเตือนใจสั้นๆ</span>
+    <div class="banner-content">
+      <span id="notificationText">ข้อความเตือนใจสั้นๆ</span>
+      <button class="banner-close-btn" id="bannerCloseBtn" onclick="closeNotificationBanner()">✕ ปิด</button>
+    </div>
+  </div>
+
+  <!-- Modal สำหรับแก้ไขข้อมูล -->
+  <div id="editModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header" id="modalTitle">แก้ไขข้อมูล</div>
+      <div id="modalBody"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal()">ยกเลิก</button>
+        <button class="btn-primary" id="modalSaveBtn">บันทึกการแก้ไข</button>
+      </div>
+    </div>
   </div>
 
   <!-- Main Content Area -->
@@ -463,26 +671,61 @@
           <div class="card-tag">SECTION 01</div>
           <h3 class="timer-title">1. ทำงาน / การเรียน</h3>
           <div class="timer-display" id="workDisplay">08:00:00</div>
-          <button class="btn-primary" id="workBtn" onclick="toggleTimer('work')">เริ่มจับเวลา</button>
+          <button class="btn-primary" style="width:100%" id="workBtn" onclick="toggleTimer('work')">เริ่มจับเวลา</button>
         </div>
 
         <div class="box-card">
           <div class="card-tag">SECTION 02</div>
           <h3 class="timer-title">2. เวลาส่วนตัว / พักผ่อน</h3>
           <div class="timer-display" id="personalDisplay">08:00:00</div>
-          <button class="btn-primary" id="personalBtn" onclick="toggleTimer('personal')">เริ่มจับเวลา</button>
+          <button class="btn-primary" style="width:100%" id="personalBtn" onclick="toggleTimer('personal')">เริ่มจับเวลา</button>
         </div>
 
         <div class="box-card">
           <div class="card-tag">SECTION 03</div>
           <h3 class="timer-title">3. นอนหลับ</h3>
           <div class="timer-display" id="sleepDisplay">08:00:00</div>
-          <button class="btn-primary" id="sleepBtn" onclick="toggleTimer('sleep')">เริ่มจับเวลา</button>
+          <button class="btn-primary" style="width:100%" id="sleepBtn" onclick="toggleTimer('sleep')">เริ่มจับเวลา</button>
         </div>
       </div>
     </section>
 
-    <!-- PAGE 2: JOURNAL SYSTEM -->
+    <!-- NEW PAGE: ALARM SYSTEM (นาฬิกาปลุก) -->
+    <section id="alarm" class="page-section">
+      <header class="page-header">
+        <h2>ระบบนาฬิกาปลุกระบุเป้าหมาย</h2>
+        <p class="subtitle">ปลุกตามเวลา พร้อมข้อความเตือนสติว่าตื่นมาเพื่อทำอะไร</p>
+      </header>
+
+      <!-- Add New Alarm Form -->
+      <div class="box-card form-box">
+        <h3 style="font-size: 1rem; color: var(--accent-color);">+ ตั้งเวลาปลุกใหม่</h3>
+        <div class="form-row">
+          <input type="time" id="newAlarmTime" class="time-input" style="width: 160px; font-weight: 700;">
+          <input type="text" id="newAlarmPurpose" placeholder="จุดประสงค์/เป้าหมาย เช่น 'ตื่นนอนไปวิ่ง 5 km', 'กินยาวิตามิน'" style="flex: 1;">
+        </div>
+        
+        <div>
+          <label style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-bottom: 8px;">เลือกวันที่ต้องการให้ปลุก:</label>
+          <div class="day-selector" id="newAlarmDays">
+            <button class="day-btn selected" data-day="0" onclick="toggleDayBtn(this)">อา.</button>
+            <button class="day-btn selected" data-day="1" onclick="toggleDayBtn(this)">จ.</button>
+            <button class="day-btn selected" data-day="2" onclick="toggleDayBtn(this)">อ.</button>
+            <button class="day-btn selected" data-day="3" onclick="toggleDayBtn(this)">พ.</button>
+            <button class="day-btn selected" data-day="4" onclick="toggleDayBtn(this)">พฤ.</button>
+            <button class="day-btn selected" data-day="5" onclick="toggleDayBtn(this)">ศ.</button>
+            <button class="day-btn selected" data-day="6" onclick="toggleDayBtn(this)">ส.</button>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="addAlarm()">ตั้งนาฬิกาปลุก</button>
+      </div>
+
+      <!-- Alarms List -->
+      <div class="reminder-grid" id="alarmsContainer"></div>
+    </section>
+
+    <!-- PAGE 3: JOURNAL SYSTEM -->
     <section id="journal" class="page-section">
       <header class="page-header">
         <h2>พื้นที่จดบันทึก</h2>
@@ -495,6 +738,7 @@
         <button class="tab-btn" onclick="switchJournalTab('goals', this)">2.3 เป้าหมายระยะยาว</button>
       </div>
 
+      <!-- 2.1 General Notes -->
       <div id="tab-general" class="journal-tab-content active">
         <div class="box-card form-box">
           <textarea id="generalInput" rows="3" placeholder="เขียนความรู้สึก ความคิด หรือสิ่งที่เจอในวันนี้..."></textarea>
@@ -503,6 +747,7 @@
         <div class="entry-list" id="generalList"></div>
       </div>
 
+      <!-- 2.2 Small Wins -->
       <div id="tab-smallwin" class="journal-tab-content">
         <div class="box-card form-box">
           <textarea id="smallwinInput" rows="3" placeholder="วันนี้มีเรื่องดีๆ อะไรเกิดขึ้นบ้าง? (เรื่องเล็กน้อยก็สะสมได้)"></textarea>
@@ -511,6 +756,7 @@
         <div class="heart-grid" id="heartGallery"></div>
       </div>
 
+      <!-- 2.3 Goals -->
       <div id="tab-goals" class="journal-tab-content">
         <div class="box-card form-box">
           <input type="text" id="goalInput" placeholder="เพิ่มเป้าหมายระยะยาวที่คุณอยากทำให้สำเร็จ...">
@@ -520,25 +766,41 @@
       </div>
     </section>
 
-    <!-- PAGE 3: REMINDERS -->
+    <!-- PAGE 4: REMINDERS -->
     <section id="reminders" class="page-section">
       <header class="page-header">
         <h2>ระบบแจ้งเตือนเพื่อสิ่งดีๆ</h2>
-        <p class="subtitle">เตือนสติเพื่อรักษาสุขภาพกายและใจ</p>
+        <p class="subtitle">ตั้งค่าการเตือนและรูปแบบการแสดงผลตามใจคุณ</p>
       </header>
 
-      <!-- System Notification Button -->
+      <!-- System Notification Permission Button -->
       <button class="btn-permission" id="permissionBtn" onclick="requestNotificationPermission()">
-        🔔 กดที่นี่เพื่อเปิดอนุญาตการแจ้งเตือนนอกหน้าจอ (System Notification)
+        🔔 กดที่นี่เพื่อเปิดสิทธิ์การแจ้งเตือนนอกหน้าจอ (System Notification)
       </button>
+
+      <!-- Global Notification Settings -->
+      <div class="box-card form-box">
+        <h3 style="font-size: 1rem; color: var(--accent-color);">⚙️ ตั้งค่ารูปแบบการแจ้งเตือน (Notification Style)</h3>
+        <div class="form-row">
+          <label style="font-size: 0.9rem; color: var(--text-secondary);">เมื่อมีการแจ้งเตือนเกิดขึ้นให้:</label>
+          <select id="notificationModeSelect" onchange="updateNotificationMode(this.value)" style="max-width: 320px;">
+            <option value="auto">เด้งขึ้นมา 5 วินาที แล้วหายไปเอง</option>
+            <option value="persistent">ค้างไว้บนหน้าจอ จนกว่าจะกดปิด</option>
+          </select>
+        </div>
+      </div>
 
       <!-- New Reminder Box -->
       <div class="box-card form-box">
         <h3 style="font-size: 1rem; color: var(--accent-color);">+ เพิ่มข้อความเตือนใจใหม่</h3>
         <div class="form-row">
-          <input type="text" id="newReminderText" placeholder="ข้อความเตือนใจ เช่น 'ลุกขึ้นยืดสายตา 5 นาที'">
-          <input type="time" id="newReminderTime" class="time-input">
-          <button class="btn-primary" style="width: 200px;" onclick="addCustomReminder()">เพิ่มการเตือน</button>
+          <input type="text" id="newReminderText" placeholder="ข้อความเตือนใจ เช่น 'ลุกขึ้นยืดสายตา 5 นาที'" style="flex: 2;">
+          <select id="newReminderTrigger" onchange="toggleTimeInput(this.value)" style="flex: 1;">
+            <option value="open">เตือนทันทีเมื่อเปิดเว็บ</option>
+            <option value="time">กำหนดเวลาแจ้งเตือน</option>
+          </select>
+          <input type="time" id="newReminderTime" class="time-input" style="display: none;">
+          <button class="btn-primary" onclick="addCustomReminder()">เพิ่มรายการเตือน</button>
         </div>
       </div>
 
@@ -555,30 +817,442 @@
       notes: JSON.parse(localStorage.getItem('aura_notes')) || [],
       wins: JSON.parse(localStorage.getItem('aura_wins')) || [],
       goals: JSON.parse(localStorage.getItem('aura_goals')) || [],
+      notificationMode: localStorage.getItem('aura_notif_mode') || 'auto',
       reminders: JSON.parse(localStorage.getItem('aura_reminders')) || [
-        { id: 1, text: "💧 ดื่มน้ำให้ครบ 8 แก้ว รักษาสมดุลร่างกาย", trigger: "open", time: "" },
-        { id: 2, text: "🧘 พักนั่งสมาธิ / มีสติอยู่กับลมหายใจปัจจุบัน", trigger: "open", time: "" },
-        { id: 3, text: "📱 วางโซเชียลมีเดียลงบ้าง ชีวิตจริงอยู่นอกหน้าจอ", trigger: "open", time: "" },
-        { id: 4, text: "✨ มีความสุขและขอบคุณสิ่งดีๆ ที่มีอยู่ในตอนนี้", trigger: "open", time: "" }
+        { id: 1, text: "💧 ดื่มน้ำให้ครบ 8 แก้ว รักษาสมดุลร่างกาย", trigger: "open", time: "", active: true },
+        { id: 2, text: "🧘 พักนั่งสมาธิ / มีสติอยู่กับลมหายใจปัจจุบัน", trigger: "open", time: "", active: true }
+      ],
+      alarms: JSON.parse(localStorage.getItem('aura_alarms')) || [
+        { id: 101, time: "06:30", purpose: "🌅 ตื่นนอน ออกกำลังกายรับแสงแดดยามเช้า", days: [0, 1, 2, 3, 4, 5, 6], active: true },
+        { id: 102, time: "22:30", purpose: "🛌 เข้านอน เข้านอนตรงเวลาเพื่อฟื้นฟูร่างกาย", days: [0, 1, 2, 3, 4, 5, 6], active: true }
       ]
     };
+
+    const dayNames = ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."];
 
     function saveState() {
       localStorage.setItem('aura_notes', JSON.stringify(state.notes));
       localStorage.setItem('aura_wins', JSON.stringify(state.wins));
       localStorage.setItem('aura_goals', JSON.stringify(state.goals));
       localStorage.setItem('aura_reminders', JSON.stringify(state.reminders));
+      localStorage.setItem('aura_alarms', JSON.stringify(state.alarms));
+      localStorage.setItem('aura_notif_mode', state.notificationMode);
     }
 
-    // --- SYSTEM NOTIFICATION PERMISSION ---
+    // --- NAVIGATION LOGIC ---
+    function switchSection(sectionId, element) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(sectionId).classList.add('active');
+      if (element) element.classList.add('active');
+    }
+
+    function switchJournalTab(tabId, element) {
+      document.querySelectorAll('.journal-tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+      if (element) element.classList.add('active');
+    }
+
+    // --- MODAL UTILS ---
+    function openModal(title, contentHTML, saveCallback) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerHTML = contentHTML;
+      const saveBtn = document.getElementById('modalSaveBtn');
+      
+      saveBtn.onclick = () => {
+        saveCallback();
+        closeModal();
+      };
+      
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('editModal').style.display = 'none';
+    }
+
+    // --- ALARM SYSTEM (นาฬิกาปลุก) ---
+    function toggleDayBtn(btn) {
+      btn.classList.toggle('selected');
+    }
+
+    function addAlarm() {
+      const time = document.getElementById('newAlarmTime').value;
+      const purpose = document.getElementById('newAlarmPurpose').value;
+      const dayBtns = document.querySelectorAll('#newAlarmDays .day-btn.selected');
+      
+      if (!time) {
+        alert('กรุณาระบุเวลาที่ต้องการให้ปลุก');
+        return;
+      }
+      if (!purpose.trim()) {
+        alert('กรุณาระบุจุดประสงค์หรือเป้าหมายของการปลุก');
+        return;
+      }
+
+      const selectedDays = Array.from(dayBtns).map(btn => parseInt(btn.dataset.day));
+
+      state.alarms.push({
+        id: Date.now(),
+        time: time,
+        purpose: purpose,
+        days: selectedDays.length > 0 ? selectedDays : [0, 1, 2, 3, 4, 5, 6],
+        active: true
+      });
+
+      document.getElementById('newAlarmTime').value = '';
+      document.getElementById('newAlarmPurpose').value = '';
+      saveState();
+      renderAlarms();
+    }
+
+    function toggleAlarmActive(id) {
+      const alarm = state.alarms.find(a => a.id === id);
+      if (alarm) {
+        alarm.active = !alarm.active;
+        saveState();
+        renderAlarms();
+      }
+    }
+
+    function editAlarm(id) {
+      const alarm = state.alarms.find(a => a.id === id);
+      if (!alarm) return;
+
+      openModal("แก้ไขนาฬิกาปลุก", `
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <label style="font-size: 0.85rem; color: var(--text-secondary);">เวลาปลุก:</label>
+          <input type="time" id="editAlarmTime" class="time-input" value="${alarm.time}">
+          
+          <label style="font-size: 0.85rem; color: var(--text-secondary);">จุดประสงค์ / เป้าหมาย:</label>
+          <input type="text" id="editAlarmPurpose" value="${escapeHtml(alarm.purpose)}">
+
+          <label style="font-size: 0.85rem; color: var(--text-secondary);">เลือกวันที่ต้องการให้เตือน:</label>
+          <div class="day-selector" id="editAlarmDays">
+            ${dayNames.map((name, index) => `
+              <button class="day-btn ${alarm.days.includes(index) ? 'selected' : ''}" data-day="${index}" onclick="toggleDayBtn(this)">${name}</button>
+            `).join('')}
+          </div>
+        </div>
+      `, () => {
+        const time = document.getElementById('editAlarmTime').value;
+        const purpose = document.getElementById('editAlarmPurpose').value;
+        const selectedDays = Array.from(document.querySelectorAll('#editAlarmDays .day-btn.selected')).map(b => parseInt(b.dataset.day));
+
+        if (time && purpose.trim()) {
+          alarm.time = time;
+          alarm.purpose = purpose;
+          alarm.days = selectedDays.length > 0 ? selectedDays : [0, 1, 2, 3, 4, 5, 6];
+          saveState();
+          renderAlarms();
+        }
+      });
+    }
+
+    function deleteAlarm(id) {
+      if (confirm('คุณต้องการลบรายการนาฬิกาปลุกนี้ใช่หรือไม่?')) {
+        state.alarms = state.alarms.filter(a => a.id !== id);
+        saveState();
+        renderAlarms();
+      }
+    }
+
+    function renderAlarms() {
+      const container = document.getElementById('alarmsContainer');
+      if (state.alarms.length === 0) {
+        container.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">ไม่มีรายการนาฬิกาปลุก</div>`;
+        return;
+      }
+
+      container.innerHTML = state.alarms.map(a => {
+        const daysText = (a.days.length === 7) ? 'ทุกวัน' : a.days.map(d => dayNames[d]).join(', ');
+        return `
+          <div class="reminder-card ${!a.active ? 'disabled' : ''}">
+            <div style="display: flex; align-items: center; gap: 1.2rem;">
+              <label class="toggle-switch">
+                <input type="checkbox" ${a.active ? 'checked' : ''} onchange="toggleAlarmActive(${a.id})">
+                <span class="slider"></span>
+              </label>
+              <div>
+                <div class="alarm-time-display">${a.time} น.</div>
+                <div style="font-weight: 600; font-size: 0.95rem; margin-top: 2px;">📌 ${escapeHtml(a.purpose)}</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">📅 เตือน: ${daysText}</div>
+              </div>
+            </div>
+            <div class="action-btn-group">
+              <button class="btn-icon" onclick="editAlarm(${a.id})">✏️ แก้ไข</button>
+              <button class="btn-icon danger" onclick="deleteAlarm(${a.id})">🗑️ ลบ</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- GENERAL NOTES ---
+    function saveGeneralNote() {
+      const input = document.getElementById('generalInput');
+      if (!input.value.trim()) return;
+      state.notes.unshift({ id: Date.now(), text: input.value, date: new Date().toLocaleDateString('th-TH') });
+      input.value = '';
+      saveState();
+      renderGeneralNotes();
+    }
+
+    function editGeneralNote(id) {
+      const item = state.notes.find(n => n.id === id);
+      if (!item) return;
+
+      openModal("แก้ไขบันทึกทั่วไป", `
+        <textarea id="editNoteText" rows="4">${item.text}</textarea>
+      `, () => {
+        const newText = document.getElementById('editNoteText').value;
+        if (newText.trim()) {
+          item.text = newText;
+          saveState();
+          renderGeneralNotes();
+        }
+      });
+    }
+
+    function deleteGeneralNote(id) {
+      if (confirm('คุณต้องการลบบันทึกนี้ใช่หรือไม่?')) {
+        state.notes = state.notes.filter(n => n.id !== id);
+        saveState();
+        renderGeneralNotes();
+      }
+    }
+
+    function renderGeneralNotes() {
+      const list = document.getElementById('generalList');
+      if (state.notes.length === 0) {
+        list.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">ยังไม่มีบันทึกทั่วไป</div>`;
+        return;
+      }
+      list.innerHTML = state.notes.map(n => `
+        <div class="entry-item">
+          <div class="entry-body">
+            <div class="entry-text">${escapeHtml(n.text)}</div>
+            <div class="entry-date">${n.date}</div>
+          </div>
+          <div class="action-btn-group">
+            <button class="btn-icon" onclick="editGeneralNote(${n.id})">✏️ แก้ไข</button>
+            <button class="btn-icon danger" onclick="deleteGeneralNote(${n.id})">🗑️ ลบ</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- SMALL WINS ---
+    function saveSmallWin() {
+      const input = document.getElementById('smallwinInput');
+      if (!input.value.trim()) return;
+      state.wins.unshift({ id: Date.now(), text: input.value, date: new Date().toLocaleDateString('th-TH') });
+      input.value = '';
+      saveState();
+      renderSmallWins();
+    }
+
+    function editSmallWin(id) {
+      const item = state.wins.find(w => w.id === id);
+      if (!item) return;
+
+      openModal("แก้ไข Small Win 💛", `
+        <textarea id="editWinText" rows="3">${item.text}</textarea>
+      `, () => {
+        const newText = document.getElementById('editWinText').value;
+        if (newText.trim()) {
+          item.text = newText;
+          saveState();
+          renderSmallWins();
+        }
+      });
+    }
+
+    function deleteSmallWin(id) {
+      if (confirm('คุณต้องการลบ Small Win นี้ใช่หรือไม่?')) {
+        state.wins = state.wins.filter(w => w.id !== id);
+        saveState();
+        renderSmallWins();
+      }
+    }
+
+    function renderSmallWins() {
+      const gallery = document.getElementById('heartGallery');
+      if (state.wins.length === 0) {
+        gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 2rem;">ยังไม่มีรายการ Small Win ที่บันทึกไว้</div>`;
+        return;
+      }
+      gallery.innerHTML = state.wins.map(w => `
+        <div class="heart-card">
+          <div class="heart-icon">💛</div>
+          <div class="heart-text">${escapeHtml(w.text)}</div>
+          <div class="heart-date">${w.date}</div>
+          <div class="action-btn-group" style="margin-top: 6px;">
+            <button class="btn-icon" onclick="editSmallWin(${w.id})">✏️</button>
+            <button class="btn-icon danger" onclick="deleteSmallWin(${w.id})">🗑️</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- GOALS ---
+    function saveGoal() {
+      const input = document.getElementById('goalInput');
+      if (!input.value.trim()) return;
+      state.goals.unshift({ id: Date.now(), text: input.value });
+      input.value = '';
+      saveState();
+      renderGoals();
+    }
+
+    function deleteGoal(id) {
+      state.goals = state.goals.filter(g => g.id !== id);
+      saveState();
+      renderGoals();
+    }
+
+    function renderGoals() {
+      const list = document.getElementById('goalsList');
+      if (state.goals.length === 0) {
+        list.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">ยังไม่มีเป้าหมายระยะยาว</div>`;
+        return;
+      }
+      list.innerHTML = state.goals.map(g => `
+        <div class="entry-item">
+          <div class="entry-text">🎯 ${escapeHtml(g.text)}</div>
+          <button class="btn-icon danger" onclick="deleteGoal(${g.id})">✕ ลบ</button>
+        </div>
+      `).join('');
+    }
+
+    // --- REMINDERS SYSTEM ---
+    function toggleTimeInput(val) {
+      const timeInput = document.getElementById('newReminderTime');
+      timeInput.style.display = (val === 'time') ? 'block' : 'none';
+    }
+
+    function updateNotificationMode(mode) {
+      state.notificationMode = mode;
+      saveState();
+    }
+
+    function addCustomReminder() {
+      const text = document.getElementById('newReminderText').value;
+      const trigger = document.getElementById('newReminderTrigger').value;
+      const time = document.getElementById('newReminderTime').value;
+
+      if (!text.trim()) return;
+      if (trigger === 'time' && !time) {
+        alert('กรุณาระบุเวลาที่ต้องการให้แจ้งเตือน');
+        return;
+      }
+
+      state.reminders.push({
+        id: Date.now(),
+        text: text,
+        trigger: trigger,
+        time: trigger === 'time' ? time : '',
+        active: true
+      });
+
+      document.getElementById('newReminderText').value = '';
+      document.getElementById('newReminderTime').value = '';
+      saveState();
+      renderReminders();
+    }
+
+    function toggleReminderActive(id) {
+      const rem = state.reminders.find(r => r.id === id);
+      if (rem) {
+        rem.active = !rem.active;
+        saveState();
+        renderReminders();
+      }
+    }
+
+    function editReminder(id) {
+      const rem = state.reminders.find(r => r.id === id);
+      if (!rem) return;
+
+      openModal("แก้ไขรายการแจ้งเตือน", `
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <label style="font-size: 0.85rem; color: var(--text-secondary);">ข้อความเตือนใจ:</label>
+          <input type="text" id="editRemText" value="${escapeHtml(rem.text)}">
+          
+          <label style="font-size: 0.85rem; color: var(--text-secondary);">เงื่อนไขการเตือน:</label>
+          <select id="editRemTrigger" onchange="document.getElementById('editRemTime').style.display = (this.value === 'time' ? 'block' : 'none')">
+            <option value="open" ${rem.trigger === 'open' ? 'selected' : ''}>เตือนทันทีเมื่อเปิดเว็บ</option>
+            <option value="time" ${rem.trigger === 'time' ? 'selected' : ''}>กำหนดเวลาแจ้งเตือน</option>
+          </select>
+
+          <input type="time" id="editRemTime" class="time-input" value="${rem.time}" style="display: ${rem.trigger === 'time' ? 'block' : 'none'};">
+        </div>
+      `, () => {
+        const text = document.getElementById('editRemText').value;
+        const trigger = document.getElementById('editRemTrigger').value;
+        const time = document.getElementById('editRemTime').value;
+
+        if (text.trim()) {
+          rem.text = text;
+          rem.trigger = trigger;
+          rem.time = trigger === 'time' ? time : '';
+          saveState();
+          renderReminders();
+        }
+      });
+    }
+
+    function deleteReminder(id) {
+      if (confirm('คุณต้องการลบการแจ้งเตือนนี้ใช่หรือไม่?')) {
+        state.reminders = state.reminders.filter(r => r.id !== id);
+        saveState();
+        renderReminders();
+      }
+    }
+
+    function renderReminders() {
+      const container = document.getElementById('remindersContainer');
+      document.getElementById('notificationModeSelect').value = state.notificationMode;
+
+      if (state.reminders.length === 0) {
+        container.innerHTML = `<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">ไม่มีรายการแจ้งเตือน</div>`;
+        return;
+      }
+
+      container.innerHTML = state.reminders.map(r => `
+        <div class="reminder-card ${!r.active ? 'disabled' : ''}">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <label class="toggle-switch">
+              <input type="checkbox" ${r.active ? 'checked' : ''} onchange="toggleReminderActive(${r.id})">
+              <span class="slider"></span>
+            </label>
+            <div>
+              <div style="font-weight: 600;">${escapeHtml(r.text)}</div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">
+                ${r.trigger === 'open' ? '📌 เตือนทันทีเมื่อเปิดโปรแกรม' : '⏰ ตั้งเวลาเตือน ' + r.time + ' น.'}
+              </div>
+            </div>
+          </div>
+          <div class="action-btn-group">
+            <button class="btn-icon" onclick="editReminder(${r.id})">✏️ แก้ไข</button>
+            <button class="btn-icon danger" onclick="deleteReminder(${r.id})">🗑️ ลบ</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- SYSTEM NOTIFICATIONS DISPATCHER ---
+    let autoHideTimer = null;
+
     function requestNotificationPermission() {
       if ("Notification" in window) {
         Notification.requestPermission().then(permission => {
           if (permission === "granted") {
             showNotification("✅ เปิดการแจ้งเตือนระบบสำเร็จแล้ว!");
-            document.getElementById('permissionBtn').innerText = "✅ การแจ้งเตือนของระบบเปิดใช้งานอยู่";
-            document.getElementById('permissionBtn').style.borderColor = "#4CAF50";
-            document.getElementById('permissionBtn').style.color = "#4CAF50";
+            updatePermissionBtnUI();
           } else {
             alert("คุณปฏิเสธการแจ้งเตือน โปรดเปิดสิทธิ์ในการตั้งค่าเบราว์เซอร์");
           }
@@ -588,28 +1262,82 @@
       }
     }
 
-    // --- NAVIGATION LOGIC ---
-    function switchSection(sectionId, element) {
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(sectionId).classList.add('active');
-      if (element) {
-        element.classList.add('active');
+    function updatePermissionBtnUI() {
+      const btn = document.getElementById('permissionBtn');
+      if ("Notification" in window && Notification.permission === "granted") {
+        btn.innerText = "✅ การแจ้งเตือนของระบบเปิดใช้งานอยู่";
+        btn.style.borderColor = "var(--success-color)";
+        btn.style.color = "var(--success-color)";
       }
     }
 
-    function switchJournalTab(tabId, element) {
-      document.querySelectorAll('.journal-tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    function showNotification(msg) {
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification("AURA Habit Tracker", {
+          body: msg,
+          requireInteraction: (state.notificationMode === 'persistent')
+        });
+      }
 
-      document.getElementById(`tab-${tabId}`).classList.add('active');
-      if (element) {
-        element.classList.add('active');
+      const banner = document.getElementById('notificationBanner');
+      const text = document.getElementById('notificationText');
+      text.innerText = msg;
+      banner.style.display = 'block';
+
+      if (autoHideTimer) clearTimeout(autoHideTimer);
+
+      if (state.notificationMode === 'auto') {
+        autoHideTimer = setTimeout(() => {
+          banner.style.display = 'none';
+        }, 5000);
       }
     }
 
-    // --- TIMERS LOGIC ---
+    function closeNotificationBanner() {
+      document.getElementById('notificationBanner').style.display = 'none';
+    }
+
+    function triggerOpenReminders() {
+      const openReminders = state.reminders.filter(r => r.active && r.trigger === 'open');
+      openReminders.forEach((r, index) => {
+        setTimeout(() => {
+          showNotification(`🔔 [เตือนสติ] ${r.text}`);
+        }, 1000 + (index * 3000));
+      });
+    }
+
+    // Real-time Clock Check for Time Reminders & Alarms
+    let triggeredToday = {};
+
+    setInterval(() => {
+      const now = new Date();
+      const currentHHMM = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+      const currentDay = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+      // Check Reminders
+      state.reminders.forEach(r => {
+        if (r.active && r.trigger === 'time' && r.time === currentHHMM) {
+          const key = `rem-${r.id}-${currentHHMM}`;
+          if (!triggeredToday[key]) {
+            triggeredToday[key] = true;
+            showNotification(`⏰ [ถึงเวลาแล้ว] ${r.text}`);
+          }
+        }
+      });
+
+      // Check Alarms
+      state.alarms.forEach(a => {
+        if (a.active && a.time === currentHHMM && a.days.includes(currentDay)) {
+          const key = `alarm-${a.id}-${currentHHMM}`;
+          if (!triggeredToday[key]) {
+            triggeredToday[key] = true;
+            showNotification(`⏰ [นาฬิกาปลุก] ${a.purpose}`);
+          }
+        }
+      });
+    }, 1000);
+
+    // --- TIMERS LOGIC (8-8-8 Rule) ---
     let timers = {
       work: { time: 28800, interval: null, running: false },
       personal: { time: 28800, interval: null, running: false },
@@ -651,163 +1379,21 @@
       }
     }
 
-    // --- JOURNAL FUNCTIONS ---
-    function saveGeneralNote() {
-      const input = document.getElementById('generalInput');
-      if (!input.value.trim()) return;
-      state.notes.unshift({ text: input.value, date: new Date().toLocaleDateString('th-TH') });
-      input.value = '';
-      saveState();
-      renderGeneralNotes();
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
-
-    function renderGeneralNotes() {
-      const list = document.getElementById('generalList');
-      list.innerHTML = state.notes.map(n => `
-        <div class="entry-item">
-          <div>${n.text}</div>
-          <div style="font-size: 0.75rem; color: var(--text-secondary);">${n.date}</div>
-        </div>
-      `).join('');
-    }
-
-    function saveSmallWin() {
-      const input = document.getElementById('smallwinInput');
-      if (!input.value.trim()) return;
-      state.wins.unshift({ text: input.value, date: new Date().toLocaleDateString('th-TH') });
-      input.value = '';
-      saveState();
-      renderSmallWins();
-    }
-
-    function renderSmallWins() {
-      const gallery = document.getElementById('heartGallery');
-      gallery.innerHTML = state.wins.map(w => `
-        <div class="heart-card">
-          <div class="heart-icon">💛</div>
-          <div class="heart-date">${w.date}</div>
-          <div class="heart-text">${w.text}</div>
-        </div>
-      `).join('');
-    }
-
-    function saveGoal() {
-      const input = document.getElementById('goalInput');
-      if (!input.value.trim()) return;
-      state.goals.unshift({ text: input.value });
-      input.value = '';
-      saveState();
-      renderGoals();
-    }
-
-    function renderGoals() {
-      const list = document.getElementById('goalsList');
-      list.innerHTML = state.goals.map((g, index) => `
-        <div class="entry-item">
-          <span>🎯 ${g.text}</span>
-          <button class="delete-btn" onclick="deleteGoal(${index})">✕</button>
-        </div>
-      `).join('');
-    }
-
-    function deleteGoal(index) {
-      state.goals.splice(index, 1);
-      saveState();
-      renderGoals();
-    }
-
-    // --- REMINDERS LOGIC ---
-    function renderReminders() {
-      const container = document.getElementById('remindersContainer');
-      container.innerHTML = state.reminders.map((r, i) => `
-        <div class="reminder-card">
-          <div>
-            <div style="font-weight: 600;">${r.text}</div>
-            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">
-              ${r.trigger === 'open' ? '📌 เตือนทันทีเมื่อเปิดโปรแกรม' : '⏰ ตั้งเวลาเตือน ' + r.time + ' น.'}
-            </div>
-          </div>
-          <button class="delete-btn" onclick="deleteReminder(${i})">ลบ</button>
-        </div>
-      `).join('');
-    }
-
-    function addCustomReminder() {
-      const text = document.getElementById('newReminderText').value;
-      const time = document.getElementById('newReminderTime').value;
-      if (!text.trim()) return;
-
-      state.reminders.push({
-        id: Date.now(),
-        text: text,
-        trigger: time ? 'time' : 'open',
-        time: time || ''
-      });
-
-      document.getElementById('newReminderText').value = '';
-      document.getElementById('newReminderTime').value = '';
-      saveState();
-      renderReminders();
-    }
-
-    function deleteReminder(index) {
-      state.reminders.splice(index, 1);
-      saveState();
-      renderReminders();
-    }
-
-    // NOTIFICATION DISPATCHER (ส่งไปทั้ง System + In-page)
-    function showNotification(msg) {
-      // 1. ส่งไปยัง System Notification (แจ้งเตือนเด้งนอกหน้าจอ)
-      if ("Notification" in window && Notification.permission === "granted") {
-        new Notification("AURA Habit Tracker", {
-          body: msg,
-          icon: "https://cdn-icons-png.flaticon.com/512/3239/3239952.png"
-        });
-      }
-
-      // 2. แสดงผลบน Banner ในหน้าเว็บด้วย
-      const banner = document.getElementById('notificationBanner');
-      const text = document.getElementById('notificationText');
-      text.innerText = msg;
-      banner.style.display = 'block';
-
-      setTimeout(() => {
-        banner.style.display = 'none';
-      }, 4000);
-    }
-
-    // Trigger Open Reminders
-    function triggerOpenReminders() {
-      const openReminders = state.reminders.filter(r => r.trigger === 'open');
-      openReminders.forEach((r, index) => {
-        setTimeout(() => {
-          showNotification(`🔔 [เตือนสติ] ${r.text}`);
-        }, 1000 + (index * 2500));
-      });
-    }
-
-    // Real-time Clock Check for Time Reminders
-    let triggeredToday = {};
-
-    setInterval(() => {
-      const now = new Date();
-      const currentHHMM = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-
-      state.reminders.forEach(r => {
-        if (r.trigger === 'time' && r.time === currentHHMM) {
-          const key = `${r.id}-${currentHHMM}`;
-          if (!triggeredToday[key]) {
-            triggeredToday[key] = true;
-            showNotification(`⏰ [ถึงเวลาแล้ว] ${r.text}`);
-          }
-        }
-      });
-    }, 1000);
 
     // --- INITIALIZATION ---
+    renderAlarms();
     renderGeneralNotes();
     renderSmallWins();
+    renderGoals();
+    renderReminders();
+    updatePermissionBtnUI();
+    triggerOpenReminders();
+  </script>
+</body>
+</html>
     renderGoals();
     renderReminders();
     triggerOpenReminders();
